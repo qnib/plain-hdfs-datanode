@@ -7,3 +7,10 @@ services:
       - "50070:50070"
   datanode:
     image: qnib/plain-hdfs-datanode
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 15s
+      restart_policy:
+        condition: on-failure
